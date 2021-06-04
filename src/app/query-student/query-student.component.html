@@ -1,0 +1,34 @@
+<div>
+  <div style="display: flex; justify-content: center; column-gap: 0.5em;padding:0.5em">
+    <ng-container [formGroup]="conditionFormGroup">
+      <input type="text" formControlName="name" pInputText placeholder="name" />
+      <input
+        type="text"
+        formControlName="email"
+        pInputText
+        placeholder="email"
+      />
+      <input type="text" formControlName="tel" pInputText placeholder="tel" />
+    </ng-container>
+  </div>
+  <div style="display: flex; justify-content: center; column-gap: 0.5em;padding:0.5em">
+    <p-button label="ค้นหา" (onClick)="queryStudent()"></p-button>
+    <p-button label="ยกเลิก" (onClick)="resetStudent()"></p-button>
+  </div>
+</div>
+<p-table [value]="studentList" [paginator]="true" [rows]="5">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>tel</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-student>
+    <tr>
+      <td>{{ student.name }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.tel }}</td>
+    </tr>
+  </ng-template>
+</p-table>
